@@ -1,0 +1,34 @@
+select * from produto;
+select * from itens_compra;
+drop table itens_compra;
+drop table compra;
+drop table produto;
+
+Create Table produto (
+Pro_Id Number (6),
+Pro_nome Varchar (30),
+Pro_Categoria varchar (30) constraint ck_Pro_Categoria check (Pro_Categoria in ('Perfumaria', 'Cosmeticos', 'Saude')),
+Pro_Status number (1) constraint ck_Pro check (Pro_Status in (0,1)),
+Pro_valor Number (8,2),
+constraint pk_Pro Primary key (Pro_Id)
+);
+
+Create table compra (
+    Com_Id number (6),
+    Com_Data_Compra date default Sysdate,
+    Com_Valor_Total number (8,2),
+    constraint PK_Com primary key (Com_Id)
+);
+
+
+Create table itens_compra (
+    Ite_Id number (6),
+    Compra_Com_Id number (6),
+       Produto_Pro_Id number (6),
+    Ite_Quantidade number (6),
+    Ite_Valor_Unitario number (8,2),
+    Ite_Valor_Total number (8,2),
+    constraint pk_Ite_Id primary key (Ite_Id),
+    constraint fk_Ite_Compra foreign key (Compra_Com_Id) references compra (Com_Id),
+    constraint fk_Pro_Id foreign key (Produto_Pro_Id) references produto (Pro_Id)
+);

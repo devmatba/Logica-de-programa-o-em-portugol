@@ -1,0 +1,42 @@
+# Release Note
+**SPRINT 1** - desenvolvimento do Cadastro de Produto, Listagem de Produtos e Sacola de Compras
+_Para acessar a **sprint 1**, clique_ [_**aqui**_](https://github.com/DolphinDatabase/DescontOn/tree/Sprint-1).
+## Funcionalidades Entregues
+- [x] Cadastro de Produtos
+- [x] Listar Produtos
+- [x] Remover Produtos Cadastrados
+- [x] Arquivar e Desarquivar Produtos Cadastrados (para armazenar dados dos produtos que já foram comprados)
+- [x] Filtrar a Listagem de Produtos (produtos disponíveis ou arquivados)
+- [x] Editar um Produto Cadastrado
+- [x] Adicionar Produtos na Sacola
+- [x] Alterar a Quantidade de Produtos na Sacola
+- [x] Remover Produtos da Sacola
+- [x] Finalizar Compra
+
+## Informações Importantes
+**Cadastro de Produtos**
+- Necessário selecionar a categoria do produto e informar o nome e  valor de venda
+- O cadastro de um produto só é efetuado quando todos os campos são preenchidos, o sistema informa quais campos faltam ser preenchidos e também quando um cadastro é efetuado com sucesso
+- O código (ID) do produto é gerado automaticamente
+
+**Remover Produtos**
+- Não é possível remover produtos que já foram comprados, nesse caso ao tentar remove-lo, será arquivado e ficará disponível na listagem de produtos arquivados
+
+**Desarquivar Produtos**
+- Para desarquivar um produto é necessário acessar os produtos arquivados através do filtro de listagem
+
+**Finalizar Compra**
+- É necessário adicionar itens na sacola para finalizar uma compra, caso contrário o sistema exibirá um alerta
+- Ao finalizar uma compra, a ferramenta verifica se o produto está disponível e se as informações essenciais como Nome e Valor não sofreram alterações (funcionalidade editar produto). Exibindo 4 possíveis alertas ("Produto não existe", "Produto não está disponível", "O Valor do Produto foi alterado" ou "O nome do Produto alterado"), com o ID de cada item que se encaixa nos casos mencionados anteriormente. 
+- Em casos de erro ao finalizar a compra, onde é exibido um alerta ("Não foi possível finalizar a compra"), o sistema redireciona o usuário e esvazia a sacola de compras.
+
+## Code Section
+
+### Geral
+- DataConfiguration
+- EcommerceApplication
+
+### Controller, Modelo e Repositório
+- Controllers: produto, sacola e principal
+- Modelos e Repositórios: produto, compra e itens compra
+
